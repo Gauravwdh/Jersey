@@ -20,22 +20,25 @@ import com.gaurav.UserImage.user.User;
 @Path("myresource")
 public class MyResource {
 
-	private static HashMap<Integer, User> map = new HashMap<>();
+  private static HashMap<Integer, User> map = new HashMap<>();
 
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/user")
-	public Response addUser(User user) {
-		map.put(user.getId(), user);
-		ResponseBuilder response = Response.accepted();
-		return response.build();
-	}
+  @POST
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Path("/user")
+  public Response addUser(User user) {
+    map.put(user.getId(), user);
+    ResponseBuilder response = Response.accepted();
+    return response.build();
+  }
 
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/user/{id}")
-	public User getUser(@PathParam("id") int id) {
-		return map.get(id);
-	}
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/user/{id}")
+  public User getUser(@PathParam("id") int id) {
+    User user = new User();
+    user.setId(1);
+    user.setName("Gaurav");
+    return user;
+  }
 
 }
